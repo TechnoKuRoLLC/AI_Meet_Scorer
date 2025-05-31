@@ -84,30 +84,26 @@
 
 ## フローチャート（虎太郎案）
 
-```
-録音
-   ↓
-ファイルアップロード
-   ↓
-Google Cloud Speech-to-Text
-   ↓
-OpenAI で評価処理
-   ↓
-画面表示
+```mermaid
+flowchart TD
+    A[録音] --> B[ファイルアップロード]
+    B --> C[Google Cloud Speech-to-Text]
+    C --> D[OpenAI で評価処理]
+    D --> E[画面表示]
 ```
 
 ---
 
 ## システム構成図（虎太郎案）
 
-```
-[ユーザー]
-   ↓
-[アップローダー画面] (AWS Amplify)
-   ↓
-[AWS Lambda] → [Google Cloud StT] → [OpenAI]
-   ↓
-[評価結果の画面表示]
+```mermaid
+flowchart TD
+    A[ユーザー] --> B[アップローダー画面<br/>AWS Amplify]
+    B --> C[AWS Lambda]
+    C --> D[Google Cloud StT]
+    C --> E[OpenAI]
+    D --> F[評価結果の画面表示]
+    E --> F
 ```
 
 ---
