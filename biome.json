@@ -1,0 +1,156 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "assists": {
+    "actions": {
+      "source": {
+        "sortJsxProps": "on",
+        "useSortedKeys": "on"
+      }
+    },
+    "enabled": true,
+    "include": ["src/**/*.tsx"]
+  },
+  "files": {
+    "ignore": ["node_modules/**"]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 120
+  },
+  "javascript": {
+    "formatter": {
+      "semicolons": "asNeeded"
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "complexity": {
+        "noExcessiveCognitiveComplexity": {
+          "level": "warn",
+          "options": {
+            "maxAllowedComplexity": 15
+          }
+        },
+        "noUselessStringConcat": "error",
+        "noUselessUndefinedInitialization": "error",
+        "useDateNow": "error",
+        "useSimplifiedLogicExpression": "error"
+      },
+      "correctness": {
+        "noConstantMathMinMaxClamp": "error",
+        "noUnusedFunctionParameters": "error",
+        "noUnusedImports": "error",
+        "noUnusedVariables": "error",
+        "useArrayLiterals": "error"
+      },
+      "nursery": {
+        "noRestrictedImports": {
+          "level": "error",
+          "options": {
+            "paths": {
+              "../database.types": "Use the ../database-override.types instead",
+              "./database.types": "Use the ./database-override.types instead",
+              "@/lib/database.types": "Use the @/lib/database-override.types instead",
+              "next/router": "Use next/navigation instead"
+            }
+          }
+        }
+      },
+      "performance": {
+        "noBarrelFile": "error",
+        "useTopLevelRegex": "error"
+      },
+      "recommended": true,
+      "style": {
+        "noDefaultExport": "error",
+        "noNamespace": "error",
+        "noNamespaceImport": "error",
+        "noNegationElse": "error",
+        "noYodaExpression": "error",
+        "useBlockStatements": "error",
+        "useCollapsedElseIf": "error",
+        "useConsistentArrayType": {
+          "level": "error",
+          "options": {
+            "syntax": "shorthand"
+          }
+        },
+        "useConsistentBuiltinInstantiation": "error",
+        "useFilenamingConvention": {
+          "level": "warn",
+          "options": {
+            "filenameCases": ["kebab-case", "PascalCase"],
+            "requireAscii": true
+          }
+        },
+        "useForOf": "error",
+        "useFragmentSyntax": "error",
+        "useNamingConvention": {
+          "level": "warn",
+          "options": {
+            "conventions": [
+              {
+                "formats": [
+                  "camelCase",
+                  "snake_case",
+                  "PascalCase",
+                  "CONSTANT_CASE"
+                ],
+                "selector": {
+                  "kind": "objectLiteralProperty",
+                  "scope": "any"
+                }
+              },
+              {
+                "formats": [
+                  "camelCase",
+                  "snake_case",
+                  "PascalCase",
+                  "CONSTANT_CASE"
+                ],
+                "selector": {
+                  "kind": "typeMember",
+                  "scope": "any"
+                }
+              }
+            ],
+            "requireAscii": false,
+            "strictCase": false
+          }
+        },
+        "useShorthandAssign": "error",
+        "useThrowNewError": "error",
+        "useThrowOnlyError": "error"
+      },
+      "suspicious": {
+        "noSkippedTests": "error",
+        "useAwait": "error",
+        "useErrorMessage": "error"
+      }
+    }
+  },
+  "organizeImports": {
+    "enabled": true
+  },
+  "overrides": [
+    {
+      "include": ["src/**/*.tsx"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noNodejsModules": "error",
+            "useHookAtTopLevel": "error"
+          }
+        }
+      }
+    }
+  ],
+  "vcs": {
+    "clientKind": "git",
+    "enabled": false,
+    "useIgnoreFile": true
+  }
+}
