@@ -88,11 +88,11 @@ export const IndividualSpeakerView = ({
         {currentData && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 text-left">
             <div className="bg-black/30 p-6 rounded-xl border border-green-500">
-              <h3 className="text-2xl font-semibold text-green-400 mb-3">🌟 Good Points</h3>
+              <h3 className="text-2xl font-semibold text-green-400 mb-3">🌟 良い点</h3>
               <p className="text-gray-200 whitespace-pre-line">{currentData.goodPointsComment}</p>
             </div>
             <div className="bg-black/30 p-6 rounded-xl border border-yellow-500">
-              <h3 className="text-2xl font-semibold text-yellow-400 mb-3">💡 Improvement Suggestions</h3>
+              <h3 className="text-2xl font-semibold text-yellow-400 mb-3">💡 改善点</h3>
               <p className="text-gray-200 whitespace-pre-line">{currentData.improvementSuggestions}</p>
             </div>
           </div>
