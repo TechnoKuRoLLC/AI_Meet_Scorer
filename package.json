@@ -1,7 +1,10 @@
 {
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.8",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "recharts": "^2.15.3",
+    "tailwindcss": "^4.1.8"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
@@ -16,6 +19,7 @@
   "private": true,
   "scripts": {
     "build": "tsc && vite build",
+    "compile": "tsc --noEmit",
     "dev": "vite",
     "lint": "biome check --write --unsafe src/",
     "lint:check": "biome check src/",
