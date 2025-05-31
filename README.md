@@ -1,4 +1,4 @@
-## AI Meet Scorer
+# AI Meet Scorer
 
 ## 概要
 
