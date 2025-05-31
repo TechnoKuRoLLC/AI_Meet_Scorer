@@ -2,6 +2,7 @@ export const meetingData = {
   individualAnalysis: [
     {
       speaker: "虎太郎",
+      speakerReview: "虎太郎は会議の主要な貢献者でした。",
       metrics: {
         貢献度: { score: 80, reason: "スキル・経験の共有や将来の展望提示など、議論の軸を提供した。" },
         一貫性: { score: 75, reason: "努力と実績を踏まえた自己評価は一貫していた。" },
@@ -10,11 +11,13 @@ export const meetingData = {
         発言密度: { score: 90, reason: "発言量・内容ともに豊富で議論の中心にいた。" },
         ファシリ度: { score: 20, reason: "議事進行や中立的まとめは見られなかった。" },
       },
+      goodPointsComment: "議論の軸を提供しました。",
+      improvementSuggestions: "協調性を改善しましょう。",
       meetingStyleAttribute: "自己表現重視（ENFP風）",
-      overallScore: 73.3,
     },
     {
       speaker: "熊野ぷ〜さん",
+      speakerReview: "熊野ぷ〜さんは議論を活発にしましたが、時には対立的でした。",
       metrics: {
         貢献度: { score: 45, reason: "自己評価に関する視点提示はあったが、建設的な提案には乏しかった。" },
         一貫性: { score: 60, reason: "自己過大評価を批判する立場は一貫していた。" },
@@ -23,11 +26,13 @@ export const meetingData = {
         発言密度: { score: 85, reason: "発言数は非常に多く、議論の一方の中心にいた。" },
         ファシリ度: { score: 10, reason: "ファシリテーションの意識は見られなかった。" },
       },
+      goodPointsComment: "多くの発言をしました。",
+      improvementSuggestions: "協調性と建設的な提案を増やしましょう。",
       meetingStyleAttribute: "批評型（ENTJ風）",
-      overallScore: 40.0,
     },
     {
       speaker: "度し難い酷使ローテ伯爵",
+      speakerReview: "度し難い酷使ローテ伯爵は論理的な視点を提供しました。",
       metrics: {
         貢献度: { score: 70, reason: "議論に論理的・客観的視点を織り込んだ。" },
         一貫性: { score: 85, reason: "客観性と論理性を一貫して強調。" },
@@ -36,8 +41,9 @@ export const meetingData = {
         発言密度: { score: 65, reason: "的確なタイミングで発言。" },
         ファシリ度: { score: 30, reason: "議論収束への小さな貢献があった。" },
       },
+      goodPointsComment: "論理的な貢献をしました。",
+      improvementSuggestions: "ファシリテーションへの貢献を増やすと良いでしょう。",
       meetingStyleAttribute: "分析重視（INTP風）",
-      overallScore: 65.8,
     },
   ],
   teamAnalysis: {
@@ -51,7 +57,8 @@ export const meetingData = {
       チームの雰囲気: { score: 40, reason: "冗談や共感も見られたが、攻撃的な発言が雰囲気を損ねた。" },
       アクション明確度: { score: 20, reason: "ToDoや明確な次のアクションは定義されなかった。" },
     },
-    overallScore: 42.9,
+    goodPointsComment: "チームは協力的な側面もありました。",
+    improvementSuggestions: "アクションの明確化と雰囲気の改善が必要です。",
   },
 } as const
 
