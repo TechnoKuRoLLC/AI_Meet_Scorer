@@ -59,6 +59,32 @@ const meetingData = {
   },
 } as const
 
+const getScoreColor = (score: number) => {
+  if (score >= 80) {
+    return "text-yellow-300"
+  }
+  if (score >= 60) {
+    return "text-green-400"
+  }
+  if (score >= 40) {
+    return "text-orange-400"
+  }
+  return "text-red-400"
+}
+
+const getScoreGradient = (score: number) => {
+  if (score >= 80) {
+    return "from-yellow-400 to-yellow-600"
+  }
+  if (score >= 60) {
+    return "from-green-400 to-green-600"
+  }
+  if (score >= 40) {
+    return "from-orange-400 to-orange-600"
+  }
+  return "from-red-400 to-red-600"
+}
+
 export const App = () => {
   const [currentSpeaker, setCurrentSpeaker] = useState(0)
   const [showOverall, setShowOverall] = useState(false)
@@ -81,32 +107,6 @@ export const App = () => {
     const timer = setTimeout(() => setAnimateScore(false), 2000)
     return () => clearTimeout(timer)
   }, [currentSpeaker, showOverall])
-
-  const getScoreColor = (score: number) => {
-    if (score >= 80) {
-      return "text-yellow-300"
-    }
-    if (score >= 60) {
-      return "text-green-400"
-    }
-    if (score >= 40) {
-      return "text-orange-400"
-    }
-    return "text-red-400"
-  }
-
-  const getScoreGradient = (score: number) => {
-    if (score >= 80) {
-      return "from-yellow-400 to-yellow-600"
-    }
-    if (score >= 60) {
-      return "from-green-400 to-green-600"
-    }
-    if (score >= 40) {
-      return "from-orange-400 to-orange-600"
-    }
-    return "from-red-400 to-red-600"
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white overflow-hidden relative">
