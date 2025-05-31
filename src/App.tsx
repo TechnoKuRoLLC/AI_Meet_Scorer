@@ -68,7 +68,7 @@ export const App = () => {
   const teamData = meetingData.teamAnalysis
 
   // Prepare radar chart data
-  const getRadarData = (metrics: typeof meetingData.teamAnalysis.metrics) => {
+  const getRadarData = (metrics: Record<string, { score: number; reason: string }>) => {
     return Object.entries(metrics).map(([key, value]) => ({
       metric: key,
       score: value.score,
