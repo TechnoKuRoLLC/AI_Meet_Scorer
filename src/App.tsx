@@ -1,42 +1,37 @@
-import { useEffect, useState } from "react"
-import { BackgroundElements } from "./components/BackgroundElements"
-import { Footer } from "./components/Footer"
-import { Header } from "./components/Header"
-import { IndividualSpeakerView } from "./components/IndividualSpeakerView"
-import { Navigation } from "./components/Navigation"
-import { TeamOverallView } from "./components/TeamOverallView"
-import { meetingData } from "./data/meeting-data"
+import { useState } from "react"
+import { ResultsView } from "./components/ResultsView"
+import { UploadScreen } from "./components/UploadScreen"
+import type { MeetingData } from "./data/meeting-data"
+import { useAnalyzeMeeting } from "./hooks/use-analyze-meeting"
+
+type AppState = "upload" | "results"
 
 export const App = () => {
-  const [currentSpeaker, setCurrentSpeaker] = useState(0)
-  const [showOverall, setShowOverall] = useState(false)
-  const [animateScore, setAnimateScore] = useState(false)
+  const [appState, setAppState] = useState<AppState>("upload")
+  const [meetingData, setMeetingData] = useState<MeetingData | null>(null)
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  useEffect(() => {
-    setAnimateScore(true)
-    const timer = setTimeout(() => setAnimateScore(false), 2000)
-    return () => clearTimeout(timer)
-  }, [currentSpeaker, showOverall])
+  const analyzeMutation = useAnalyzeMeeting()
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white overflow-hidden relative">
-      <BackgroundElements />
-      <Header />
-      <Navigation setShowOverall={setShowOverall} showOverall={showOverall} />
+  const handleFileUpload = async (text: string) => {
+    try {
+      const result = await analyzeMutation.mutateAsync(text)
+      setMeetingData(result)
+      setAppState("results")
+    } catch (error) {
+      console.error("Analysis failed:", error)
+      alert("分析に失敗しました。もう一度お試しください。")
+    }
+  }
 
-      {showOverall ? (
-        <TeamOverallView animateScore={animateScore} teamData={meetingData.teamAnalysis} />
-      ) : (
-        <IndividualSpeakerView
-          animateScore={animateScore}
-          currentSpeaker={currentSpeaker}
-          individualAnalysis={meetingData.individualAnalysis}
-          setCurrentSpeaker={setCurrentSpeaker}
-        />
-      )}
+  const handleNewAnalysis = () => {
+    setAppState("upload")
+    setMeetingData(null)
+    analyzeMutation.reset()
+  }
 
-      <Footer />
-    </div>
-  )
+  if (appState === "results" && meetingData) {
+    return <ResultsView meetingData={meetingData} onNewAnalysis={handleNewAnalysis} />
+  }
+
+  return <UploadScreen isLoading={analyzeMutation.isPending} onFileUpload={handleFileUpload} />
 }

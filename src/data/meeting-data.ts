@@ -6,7 +6,7 @@ export const meetingData = {
         貢献度: { score: 80, reason: "スキル・経験の共有や将来の展望提示など、議論の軸を提供した。" },
         一貫性: { score: 75, reason: "努力と実績を踏まえた自己評価は一貫していた。" },
         協調性: { score: 40, reason: "熊野ぷ〜さんへの対抗姿勢が強く、対立を助長する発言があった。" },
-        脱線度: { score: 35, reason: "途中から雑談や対立が長引き、会議主題から逸れがち。" }, // Inverted for display
+        脱線度: { score: 35, reason: "途中から雑談や対立が長引き、会議主題から逸れがち。" },
         発言密度: { score: 90, reason: "発言量・内容ともに豊富で議論の中心にいた。" },
         ファシリ度: { score: 20, reason: "議事進行や中立的まとめは見られなかった。" },
       },
@@ -54,3 +54,5 @@ export const meetingData = {
     overallScore: 42.9,
   },
 } as const
+
+export type MeetingData = typeof meetingData
