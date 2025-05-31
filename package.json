@@ -1,14 +1,18 @@
 {
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "recharts": "^2.15.3"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
+    "@tailwindcss/vite": "^4.1.8",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",
+    "tailwindcss": "^4.1.8",
     "tsx": "^4.7.2",
+    "tw-animate-css": "^1.0.7",
     "typescript": "^5.4.5",
     "vite": "^5.4.10"
   },
@@ -16,6 +20,7 @@
   "private": true,
   "scripts": {
     "build": "tsc && vite build",
+    "compile": "tsc --noEmit",
     "dev": "vite",
     "lint": "biome check --write --unsafe src/",
     "lint:check": "biome check src/",
