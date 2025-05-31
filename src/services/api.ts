@@ -11,8 +11,8 @@ export interface AnalyzeResponse {
   error?: string
 }
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3001/api"
-const USE_MOCK_API = import.meta.env.VITE_USE_MOCK_API === "true" || !import.meta.env.VITE_API_URL
+const API_BASE_URL = import.meta.env.VITE_ANALYZE_TEXT_API_URL || "http://localhost:3001/api"
+const USE_MOCK_API = import.meta.env.VITE_USE_MOCK_API === "true" || !import.meta.env.VITE_ANALYZE_TEXT_API_URL
 
 // Mock API for development/testing
 const mockAnalyzeMeetingText = async (text: string): Promise<MeetingData> => {
@@ -31,12 +31,12 @@ export const analyzeMeetingText = async (text: string): Promise<MeetingData> => 
     return mockAnalyzeMeetingText(text)
   }
 
-  const response = await fetch(`${API_BASE_URL}/analyze`, {
+  const response = await fetch(API_BASE_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ text }),
+    body: JSON.stringify({ body: { text: JSON.stringify({ text }) } }),
   })
 
   if (!response.ok) {
@@ -44,6 +44,7 @@ export const analyzeMeetingText = async (text: string): Promise<MeetingData> => 
   }
 
   const result: AnalyzeResponse = await response.json()
+  console.log({ result })
 
   if (!result.success) {
     throw new Error(result.error || "Analysis failed")
