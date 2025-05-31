@@ -11,3 +11,4 @@ AI 会議評価アプリ
 - Biome
 - Vite
 - Tailwind CSS
+readme更新
