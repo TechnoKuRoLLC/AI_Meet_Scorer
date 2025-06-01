@@ -41,5 +41,5 @@ jobs:
       - name: Deploy to AWS Lambda
         run: |
           aws lambda update-function-code \
-            --function-name my-python-lambda \
+            --function-name callopenai \
             --zip-file fileb://function.zip
