@@ -34,11 +34,14 @@ jobs:
             python3.13 -m venv /app/venv &&
             source /app/venv/bin/activate &&
             pip install --upgrade pip &&
-            pip install -r functions/call_openai/requirements.txt -t python_lib/ &&
-            mkdir -p package &&
-            cp functions/call_openai/lambda_function.py package/ &&
-            cp -r python_lib/* package/ &&
-            cd package &&
+
+            # 💡 ここで相対パスを絶対化する
+            pip install -r /app/functions/call_openai/requirements.txt -t /app/python_lib/ &&
+
+            mkdir -p /app/package &&
+            cp /app/functions/call_openai/lambda_function.py /app/package/ &&
+            cp -r /app/python_lib/* /app/package/ &&
+            cd /app/package &&
             zip -r9 ../function.zip .
           "
 
