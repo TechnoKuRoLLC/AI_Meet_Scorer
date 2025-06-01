@@ -20,10 +20,14 @@ jobs:
 
       - name: Run Amazon Linux 2 Docker build
         run: |
-          docker run --rm -v "${{ github.workspace }}":/var/task public.ecr.aws/amazonlinux/amazonlinux:2023 bash -c "
+          docker run --rm -v "${{ github.workspace }}":/app -w /app public.ecr.aws/amazonlinux/amazonlinux:2023 bash -c "
             yum install -y python3.11 python3.11-pip zip gcc rust cargo &&
             python3.11 -m venv venv &&
             source venv/bin/activate &&
+            echo '===== pwd inside container =====' &&
+            pwd &&
+            echo '===== ls -R inside container =====' &&
+            ls -R &&
             pip install --upgrade pip &&
             pip install -r functions/call_openai/requirements.txt -t python/ &&
             mkdir -p package &&
