@@ -34,10 +34,10 @@ jobs:
             python3.13 -m venv /app/venv &&
             source /app/venv/bin/activate &&
             pip install --upgrade pip &&
-            pip install -r functions/call_openai/requirements.txt -t python/ &&
+            pip install -r functions/call_openai/requirements.txt -t python_lib/ &&
             mkdir -p package &&
             cp functions/call_openai/lambda_function.py package/ &&
-            cp -r python/* package/ &&
+            cp -r python_lib/* package/ &&
             cd package &&
             zip -r9 ../function.zip .
           "
