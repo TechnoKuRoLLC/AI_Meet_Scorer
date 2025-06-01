@@ -20,7 +20,7 @@ jobs:
             python3.11 -m venv venv &&
             source venv/bin/activate &&
             pip install --upgrade pip &&
-            pip install -r requirements.txt -t python/ &&
+            pip install -r functions/call_openai/requirements.txt -t python/ &&
             mkdir -p package &&
             cp functions/call_openai/lambda_function.py package/ &&
             cp -r python/* package/ &&
