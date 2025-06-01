@@ -26,7 +26,7 @@ jobs:
       - name: Prepare deployment package
         run: |
           mkdir package
-          cp functions/call_openai/index.py package/
+          cp functions/call_openai/lambda_function.py package/
           cp -r python/* package/ || true
           cd package
           zip -r ../function.zip .
